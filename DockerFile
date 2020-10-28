@@ -1,0 +1,17 @@
+FROM torizon/qt5-wayland-examples-vivante:1
+WORKDIR /app
+COPY package.json /app
+RUN apt-get update && apt-get upgrade 
+RUN apt-get install build-essential
+RUN apt-get install cutecom
+RUN apt-get install gtkterm
+RUN apt-get install midori
+RUN apt-get install nautilus
+RUN apt-get install qterminal
+RUN apt-get install nodejs
+RUN apt-get install npm
+RUN npm install
+RUN chmod 777 *
+COPY . /app
+CMD node app.js & midori -a file:///app/index.html
+EXPOSE 5555

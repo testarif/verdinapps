@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+body {
+
+
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://media-exp1.licdn.com/dms/image/C4D1BAQHmUNvRSOErGQ/company-background_10000/0?e=2159024400&v=beta&t=Zdkh3PRgKUr3xZKLhrl91yb1BnoZgk93nGxoqS-bwno");
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+
+}
+
+#container
+{
+    width: 90%;
+    height: 30%;
+    top: 50%;
+    left: 50%;
+    margin-left: -35%;
+    margin-top: -3%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  width: 15%;
+  height: 35%;
+  font-size: 3vmin;
+	
+
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+}
+
+@media screen and (max-width: 200px)   {
+  #container{
+    width:100%;
+
+  }
+  .btn{
+   width:100%;
+
+  }
+  body{
+    height: 100%;
+    width:100%;
+  }
+
+}
+</style>
+</head>
+<body >
+
+<div id="container">
+
+<button name="gtkterm"  class="btn"><i class="fa fa-list-alt"></i> GTK Terminal</button>
+<button name="midori"  class="btn"><i class="fa fa-firefox"></i> Browser App</button>
+<button name="nautilus"   class="btn"><i class="fa fa-folder"></i> Folder System</button>
+<button name="qterminal"   class="btn"><i class="fa fa-linux"></i> Linux Terminal</button>
+<button name="cutecom"   class="btn"><i class="fa fa-indent"></i> Cute Terminal</button>
+</div>
+
+</body >
+
+
+<script>
+
+$(document).ready(function(){
+	$(".btn").on("click", function(){
+		var command= $(this).attr('name');
+		$.ajax({
+			url:'http://192.168.1.211:5555/exec', // set your ip
+			type:'POST',
+		 	data: {comm:command.toString()},
+		 	success:function(e){
+		 	}
+		 });
+
+	});
+});
+</script>
+
+
+
+</html>
